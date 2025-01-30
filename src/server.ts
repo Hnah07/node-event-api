@@ -17,6 +17,11 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Redirect to docs
+app.get("/", (req, res) => {
+  res.redirect("/api-docs"); //iedereen die de homepage bezoekt wordt redirect naar docs
+});
+
 // Routes
 app.use("/api/events", eventRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
