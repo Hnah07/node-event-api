@@ -1,71 +1,109 @@
-# Node, Express and TypeScript Project Template
+# Event API
 
-Welcome to the **Node, Express and TypeScript Project Template**! This repository serves as a starter template for building Node.js applications with TypeScript. It comes pre-configured with models, controllers, routes, and bundling, so you can focus on building your application.
+## Overview
+
+The **Event API** allows users to manage events, including creating, retrieving, updating, and deleting events. This API follows RESTful principles and is documented using Swagger.
 
 ## Features
 
-- **TypeScript**: Strongly typed language for writing robust and maintainable code.
-- **Project Structure**: Organized folder structure with models, controllers, and routes.
-- **Bundling pkgroll**: Pre-configured with a bundler for efficient builds.
-- **TSX**: For automatic server restarts an running typescript during development.
-- **Dependency Management**: Configured with npm.
+- Retrieve all events
+- Retrieve a single event by ID
+- Create a new event
+- Update an existing event
+- Delete an event
 
-## Project Structure
+## API Documentation
+
+This API uses **Swagger** for documentation. You can access the interactive API documentation at:
+
+- **Production**: [https://event-api.onrender.com/docs](https://event-api.onrender.com/docs)
+- **Development**: [http://localhost:3000/api-docs](http://localhost:3000/api/docs)
+
+## Endpoints
+
+### Events
+
+#### Get all events
 
 ```
-├── src
-│   ├── controllers
-│   │   └── exampleController.ts
-│   ├── middleware
-│   │   └── exampleMiddleware.ts
-│   ├── models
-│   │   └── exampleModel.ts
-│   ├── routes
-│   │   └── exampleRoutes.ts
-│   └── server.ts    // Main entry point of the application
-├── dist             // Compiled output (auto-generated)
-├── package.json     // Project dependencies and scripts
-├──.gitignore        // Ignore files to github
-├── tsconfig.json    // TypeScript configuration
-└── README.md        // Project documentation
+GET /events
 ```
 
-## Getting Started
+Response:
 
-### 1. Start Development Server
-
-Run the development server with hot-reloading:
-
-```bash
-npm run dev
+```json
+[
+  {
+    "id": "1",
+    "name": "Music Festival",
+    "date": "2025-06-15",
+    "location": "New York",
+    "description": "A live music event",
+    "isFree": true
+  }
+]
 ```
 
-### 2. Build the Project
+#### Get an event by ID
 
-Compile TypeScript files to JavaScript:
-
-```bash
-npm run build
+```
+GET /events/{id}
 ```
 
-### 3. Start the Production Server
+#### Create a new event
 
-After building the project, start the server:
-
-```bash
-npm start
+```
+POST /events
 ```
 
-## Scripts
+Request Body:
 
-- `dev`: Starts the development server with hot-reloading.
-- `build`: Compiles the TypeScript source code to JavaScript.
-- `start`: Starts the production server.
+```json
+{
+  "name": "Tech Conference",
+  "date": "2025-09-20",
+  "location": "San Francisco",
+  "description": "An event for tech enthusiasts",
+  "isFree": false
+}
+```
+
+#### Update an event
+
+```
+PUT /events/{id}
+```
+
+#### Delete an event
+
+```
+DELETE /events/{id}
+```
+
+## Error Handling
+
+All errors return a JSON response with a message field:
+
+```json
+{
+  "message": "Error description here"
+}
+```
+
+Common HTTP status codes used:
+
+- `200 OK` – Request was successful
+- `201 Created` – New resource successfully created
+- `400 Bad Request` – Invalid input
+- `404 Not Found` – Resource does not exist
+- `500 Internal Server Error` – Unexpected server issue
+
+## Technologies Used
+
+- **Node.js** with **Express.js**
+- **Swagger** for API documentation
+- **TypeScript** (depending on project setup)
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-Happy coding! 🎉
+This project is licensed under the MIT License.
