@@ -163,10 +163,10 @@ const router = express.Router();
  */
 
 router
-  .get("/events", getEvents)
-  .post("/events", addEvent)
-  .get("/events/:id", getEventById)
-  .put("/events/:id", updateEvent)
-  .delete("/events/:id", deleteEvent);
+  .get("/", getEvents)
+  .post("/", addEvent)
+  .get("/:id", getEventById)
+  .put("/:id", updateEvent)
+  .delete("/:id", deleteEvent);
 
 export default router;

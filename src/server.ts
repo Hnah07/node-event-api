@@ -3,9 +3,11 @@ import "dotenv/config";
 import cors from "cors";
 import express from "express";
 import { notFound } from "./controllers/notFoundController";
-import testRoutes from "./routes/exampleRoutes";
+import eventRoutes from "./routes/eventRoutes";
 import { helloMiddleware } from "./middleware/exampleMiddleware";
 import mongoose from "mongoose";
+import { specs } from "./swagger";
+import swaggerUi from "swagger-ui-express";
 
 // Variables
 const app = express();
@@ -16,7 +18,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api", helloMiddleware, testRoutes);
+app.use("/api/events", eventRoutes);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 app.all("*", notFound);
 
 // Database connection
