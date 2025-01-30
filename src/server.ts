@@ -2,10 +2,10 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
+import mongoose from "mongoose";
 import { notFound } from "./controllers/notFoundController";
 import eventRoutes from "./routes/eventRoutes";
 import { helloMiddleware } from "./middleware/exampleMiddleware";
-import mongoose from "mongoose";
 import { specs } from "./swagger";
 import swaggerUi from "swagger-ui-express";
 
