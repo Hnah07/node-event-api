@@ -102,7 +102,7 @@ Common HTTP status codes used:
 
 - **Node.js** with **Express.js**
 - **Swagger** for API documentation
-- **TypeScript** (depending on project setup)
+- **TypeScript**
 
 ## License
 
