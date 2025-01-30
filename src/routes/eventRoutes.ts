@@ -7,7 +7,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/events:
+ * /events:
  *   get:
  *     summary: Get all events
  *     tags: [Events]
@@ -70,7 +70,7 @@ const router = express.Router();
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Error'
- * /api/events/{id}:
+ * /events/{id}:
  *   get:
  *     summary: Get an event by ID
  *     tags: [Events]

@@ -19,7 +19,7 @@ export const getEvents = async (req: Request, res: Response) => {
 export const addEvent = async (req: Request, res: Response) => {
   try {
     const { name, date, location, description, isFree } = req.body;
-    const event = await Event.create(req.body);
+    const event = await Event.create({ name, date, location, description, isFree });
     res.status(201).json(event);
   } catch (error: unknown) {
     if (error instanceof ValidationError){
