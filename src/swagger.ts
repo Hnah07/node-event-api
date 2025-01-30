@@ -49,7 +49,7 @@ const options = {
         }
     ]
     },
-    apis: ["src/**/*.ts"],
+    apis: ["**/*.ts"],
 };
 
 export const specs = swaggerJSDoc(options);
