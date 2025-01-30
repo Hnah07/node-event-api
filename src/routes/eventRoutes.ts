@@ -43,7 +43,8 @@ const router = express.Router();
  *               name:
  *                 type: string
  *               date:
- *                 type: date
+ *                 type: string
+ *                 format: date
  *               location:
  *                 type: string
  *               description:
@@ -76,7 +77,6 @@ const router = express.Router();
  *     parameters:
  *       - name: id
  *         in: path
- *         name: id
  *         required: true
  *         schema:
  *           type: string
@@ -112,7 +112,8 @@ const router = express.Router();
  *               name:
  *                 type: string
  *               date:
- *                 type: date
+ *                 type: string
+ *                 format: date
  *               location:
  *                 type: string
  *               description:
@@ -153,7 +154,10 @@ const router = express.Router();
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Event'
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
  *       500:
  *         description: Something went wrong
  *         content: 

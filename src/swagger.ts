@@ -18,7 +18,7 @@ const options = {
     :
     [
         {
-            url: "http://localhost:3000/api/v1",
+            url: "http://localhost:3000/api",
             description: "Development server",
         },
     ],
@@ -28,7 +28,7 @@ const options = {
                 type: "object",
                 properties: {
                     name: { type: "string" },
-                    date: { type: "date" },
+                    date: { type: "string", format: "date" },
                     location: { type: "string" },
                     description: { type: "string" },
                     isFree: { type: "boolean" },
@@ -42,7 +42,7 @@ const options = {
             },
         }
     },
-    Tags: [
+    tags: [
         {
             name: "Events",
             description: "Endpoints for events",
