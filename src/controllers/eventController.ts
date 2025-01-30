@@ -18,6 +18,7 @@ export const getEvents = async (req: Request, res: Response) => {
 
 export const addEvent = async (req: Request, res: Response) => {
   try {
+    const { name, date, location, description, isFree } = req.body;
     const event = await Event.create(req.body);
     res.status(201).json(event);
   } catch (error: unknown) {
@@ -30,7 +31,8 @@ export const addEvent = async (req: Request, res: Response) => {
 };
 export const getEventById = async (req: Request, res: Response) => {
   try {
-    const event = await Event.findById(req.params.id);
+    const { id } = req.params;
+    const event = await Event.findById(id);
     res.status(200).json(event);
   } catch (error: unknown) {
     if (error instanceof Error){
@@ -43,7 +45,8 @@ export const getEventById = async (req: Request, res: Response) => {
 
 export const updateEvent = async (req: Request, res: Response) => {
   try {
-    const event = await Event.findByIdAndUpdate(req.params.id, req.body, {
+    const { id } = req.params;
+    const event = await Event.findByIdAndUpdate(id, req.body, {
       new: true,
     });
     res.status(200).json(event);
@@ -57,7 +60,8 @@ export const updateEvent = async (req: Request, res: Response) => {
 };
 export const deleteEvent = async (req: Request, res: Response) => {
   try {
-    const event = await Event.findByIdAndDelete(req.params.id);
+    const { id } = req.params;
+    const event = await Event.findByIdAndDelete(id);
     res.status(200).json(event);
   } catch (error: unknown) {
     if (error instanceof Error){
